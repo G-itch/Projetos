@@ -1,0 +1,1614 @@
+038
+Nomenclatura:
+Não se recomenda ciar uma variável dentro de uma função que tenha o mesmo "nome" que ela
+
+print(função), mostra em que endereço de memória está localizada a função
+
+não de valores a funções por variáveis "globais" pois ela deixará de ser uma função 
+
+existe um truque de que é: antes de mudar a variável de função para outros valores
+você cria outra variável para receber o conteúdo da função
+
+Descrição:
+Escrever comentários dentro da função gera a descrição da mesma
+se você escrever help(função-aqui), mostra os comentários escritos
+
+039
+Recursividade
+Funções recursivas se referem a si mesmas
+
+040 
+Nested functions é colocar uma função dentro de uma função
+você pode pedir var global dentro de uma quanto de outra
+NonLocal se usa para adquirir variáveis que estão dentro da mesma função
+def n1(n):
+    def n2():
+        NonLocal n
+para alocar valores a uma função dentro de uma função é só abrir outro parênteses
+
+041
+Lambda funciona igual uma função.
+
+def soma(x,y,z):
+    return x+y+z
+===
+f = (lambda x,y,z: x+y+z)
+
+043
+Break, para uma sequência
+Continue, continua ou seja quando as quando as condições forem dadas ela pula oque vier 
+embaixo dela e renicia o ciclo
+
+044
+Concatenação (somar strings) é um aforma válida
+\n pula a linha
+\t aperta tab
+
+045
+Formatação se recebe a partir de % ex: %f = float
+end(pular linha)= \n 
+para determinar o end coloca print(" ", end="")
+
+046
+Strings são tuplas de caracteres
+espaço e \n são caracteres
+
+047
+Padrão ASCII tem 256 caracteres, Python tem ~= 800
+ASCII serve para determinar a posição das letras em código binário
+chr() chama o caracter relacionado ao número 
+%c serve para chamar caracteres atravéz de números inteiros
+ord mostra o número que o caracter possui
+comparações são dadas a partir do número de caracteres
+in serve para ver se um elemento está dentro da lista
+
+048
+.lower() coloca todas as letras em minúsculo
+.split() divide as palavras em uma lista a partir da separação dadas
+.isalpha() verifica se todo os caracters são letras
+.islower() verifica se todos os caracteres são letra minúsculas
+.isupper() verifica se todos os caracteres são letra maiúsculas
+
+049
+Forca é legal
+
+050
+.find() verifica sem tem a substring colocada dentro da string e mostra o índice dela
+.index() verifica sem tem a substring colocada dentro da string e mostra o índice dela
+
+A diferença entre os dois métodos é que se não houver a substring na string o find retorna-1 e o index dá erro
+
+.count() conta quantas vezes um elemento está presente em uma string 
+.replace() muda os elementos correspondentes da string por outra coisa desejada
+
+051
+open() abri o arquivo
+
+Há três metódos principais de leitura a abertura de um arquivo:
+w --> write --> escrever
+r --> read --> ler
+a --> append --> extender
+
+sempre no código no final tem que pedir para fechar o arquivo:
+.close()
+
+.write() escreve oque você quer dentro do arquivo (se o open for "w" ele reescreve ao aquivo, se for "a" ele adiciona)
+.writelines() escreve recebendo uma lista
+.read() Lê o conteúdo do arquivo
+.readline() Lê uma linha do arquivo
+.readlines() Lê o conteúdo e tranforma em elementos de uma lista
+
+052
+wb --> writebytes (escreve o arquivo em bytes)
+rb --> readbytes (lê o arquivo em bytes)
+
+.seek() pula os bytes desejados de um arquivo (sendo assim "esconde")
+.tell() diz em que bytes o arquivo parou
+
+da pra fazer for loops em arquivo
+
+criar uma maneira de carregar e descarregar listas
+.eval() avalia a expressão e cria algo a partir disso
+
+053
+não tem sentido fazer esse exercício agora no momento de aprendizagem 
+voltar alguma outra houra
+
+054
+tuplas são ()
+listas são []
+dicionários são {}
+
+dicionários são feitos a partir de {" ": ,}
+para procurar algo no dicionário é dicionário["A string referente " ou int]
+não da pra ter um dicionário de uma lista
+da para criar e substituir valores no dicionário 
+
+055
+além de armazenar int float str e listas, dicionários podem armazenar funções
+da pra fazer for loops ,usar len e in nos dicionários
+
+056
+.get() pega a variavel que é se referida a partir da chave (.get("Nome") = retorna o nome )
+.items() retorna uma tupla das chaves de um dicionário e seu respectivos valores
+.keys() retorna uma tupla das chaves de um dicionário
+
+pode se usar for loops para percorrer os valores de cada método
+.copy() copia os valores do dicionário para a variavéç que você decidir 
+.pop() reitra a chave desejada (com o seu valor) do dicionário
+.popitem() retira a primeira chave e o seu valor de um dicionário
+.clear() limpa completamente o dicionário
+.setdefault() imprime/cria/muda os valores de uma chave desejada
+
+existe o construtor de dicionários (dict()) porém só vai usar ele mais pra frente
+
+058
+PROGRAMAÇÃO ORIENTADA A OBJETOS!!!!!
+
+Programação estruturada:
+1)Sequência, condição,repetição
+2)Subprogramação(modularização)
+3) meios abstratos(modelos matemáticos+operações)
+
+Programação orientada a objetos:
+() Tenta se aproximar do mundo real
+() Data+ código
+
+Exemplo:
+    Cachorro
+    Atributos:
+-nome
+-peso
+-cor do pelo
+    Métodos:
+-latir()
+-abanar()
+^
+|
+chamado de classe(geral)
+porem os atributos mudam formando objetos
+
+Mensagem é uma chamada a um objeto para invocar um de seus métodos
+
+Herança é o mecanismo pelo qual uma classe(sub-classe) pode estender outra classe(super-classe),
+aproveitando seus comportamentos(métodos) e variavéis possivéis(atributos)
+
+Associação é o mecanismo pelo qual um objeto utiliza os recurso de outro. 
+Pode tratar-se de um associação simples "usa um" ou de um acoplamento "parte de".
+Por exemplo: Um humano us aum telefone. A tecla "1" é parte de um telefone
+
+Polimorfismo significa que a mesma operação pode se comportar de maneiras diferentes em classes diferentes
+
+Encapsulamento forma que expõe os atributos 
+
+059
+list, int , float, etc... são tipos de classes
+
+para criar classes se recomenda:
+class Meu_objeto(object):
+
+depois se cria o método construtor(o que forma atributos):
+def __init__(self):
+    self.nome = "Enzo"
+    self. ...
+(__init__ se refere ao inicio e self a instância da classe)
+
+sempre que criar novos métodos você tem que usar (self) para se referir a classe
+
+060
+Atributos podem ser criados ou mudados fora da classe
+Associações fazem os objetos interagirem, você pode associar cada um como preferir
+
+061 
+Em geral classes podem ser melhores que dicionários, pois pela sua vasta versatilidade e faciliade torna as coisas mais viáveis
+
+062 
+Heranças servem para implementar atributos padrões de uma classe a partir de uma superclasse
+para se criar herança se usa:
+class classe(superclasse):
+
+Polimorfismo se refere a tranformações dos atributos e sobreposição dos métodos construtores
+
+para não sobrepor totalmente os atributos informados existe a classe super:
+super(classe,self).__init__(atributos da superclasse)
+
+o object de class classe(object): 
+vem de herança, que significa que essa é a classe default, ou seja, a padrão de todas as classes
+
+063
+Abstração se refere a construir um função na superclasse que não possui método específico,ou seja, não faz nada, porém as subclasses terão que construir
+
+Atributos/métodos estáticos são criados em uma classe e se tornam "fixos" de modo que qualquer objeto que você criar a partir daquela classe terá o default aquelas informações
+métodos estáticos não tem self
+
+Encapsulamento é "esconder" métodos ou atributos
+para tornar algo privado, se coloca dois underlines(__) antes daquilo
+atributos e métodos privados só podem ser acessados a partir de dentro da classe
+
+064 
+
+Métdos e atributos especiais 
+
+__str__ = quando chamado será o valor mostrado quando for imprimir o valor (especifica o modo de imprimir)
+
+__add__ = atribui a opção de somar valores ao objeto
+
+__sub__ = atribui a opção de subtrair (obj - obj)
+
+__div__ = atribui a opção de dividir (obj / obj)
+
+__mult__ = atribui a opção de multiplicar (obj * obj)
+
+__doc__ = imprime os comentários que o objeto possui
+
+issubclass = Verifica se uam classe é subclasse da outra
+
+__bases__ = Verifica as "origens de classe" (superclasse) da classe
+porém apenas mostra a superclasse direta daquela classe
+
+callabe() pergunta zse pode se chamado
+
+__call__ imprime o que for colocado dentro da função sem precisar chamar diretamente 
+
+065 
+Se você atribuir duas variáveis pra um mesmo objeto, se você mudar o valor de uma 
+o valor das duas vão mudar pois elas apontam para o endereço demória do mesmo objeto
+
+id() mostra o endereço de memória onde a variável está alocada
+
+__le__ x<=y 
+
+__eq__ x==y
+
+__ge__ X>=y
+
+__lt__ x<y
+
+__gt__ x>y
+
+__ne__ x!=y
+
+067 
+
+Try Except
+
+Bloco que elemina erros se algo n der
+
+Try:
+    faça isso
+Except "coloque aqui o os erros encontrados antes para ver se algo está errado no código":
+    Se não der certo faça isso
+Finally:
+    Executa independente se der certo ou não
+
+068
+
+Raise 
+
+Raise serve para adicionar um erro de acordo com os parâmetros desejados
+
+Exception = Cria uma classe para quando for dar erro
+
+Class ___(Exception):
+
+069
+
+Pode se colocar quantas excessões quiser no bloco Except
+
+as = como
+
+serve no bloco try para verificar o erro que acontece
+
+else: = se não houver exceções faça isso
+
+070 
+
+Raise from, aumenta um erro do valor
+
+__debug__ = módulo que por default recebe True e serve para realizar debug no sistema 
+
+
+071
+Statement With as 
+Funciona como a declaração e abertura de um arquivo e tentar fechar ele,junto com um try except
+With funciona com Context manager
+__enter__ , __exit__(tipo,valor,traceback) 
+
+072 
+As vezes se torna vantojodso criar as próprias exceções para identificar erros de dados que não são do alcance
+
+073
+Debugando programas,
+
+Debugar erros servem principalmente na verificação de erros matemáticos no programa
+
+import pdb
+
+pdb.set_trace() = Marca o íncio do debug
+
+N ou next vai para a próxima linha de excução do código
+
+List ou l= imprime as linha de referências com a que você está no centro
+
+digitar a variável no debug imprime o valor que ela tem ou (p var)
+
+step ou s = entra dentro da função na linha
+
+breakpoint ou b = marca um ponto para a excução do programa em que para de ser utomático a partir do Continue
+
+continue ou c = executa o código porém não linha por linha
+
+074 Del e is
+
+Del = Deletar 
+pode deletar items de listas e dicionários
+(não tuplas e elementos de strings)
+
+is = é 
+comparação entre IDs das listas(alocação e armazenamento do endereço de memória)
+
+075 
+
+Struct = codfificação de um arquivo
+
+
+
+
+
+
+UDEMYYYYYYYYYYYYY
+
+Map serve para percorrer algo como um for porém de forma resumida
+
+Filter serve para filtrar a saída de elementos a partir de uma função
+
+type() identifica que tipo de formato a variavél guarda ou ela é
+
+
+17
+numpy é um método de álgebra linear
+vetores possuem só 1D e matrizes 2D ou mais
+
+np.array() = cria uma matriz a partir dos elementos colocados
+
+np.arange() = cria uma matriz a partir de um número até outro
+
+np.zeros() = cria uma matriz de zeros
+
+np.ones() = cria uma matriz de uns
+
+para se criar uma matriz de 2 dimensões se coloca uma tupla dentro da criação da matriz
+
+np.eyes() = matriz identidade (1 na diagonal e o resto 0)
+
+np.linspace() = forma um range, porém você decide quantos números aparecem igualmente espeçados na matriz
+
+np.random.rand() = cria matrizes padronizadas,positivos(padrão 0 a 1, se quiser outro multiplica pelo número ex: * 100 )
+
+np.random.randn() = cria matrizes gaussianas
+
+np.random.randint() = cria matrizes naturais positivas
+
+array(o array).reshape() = organiza a matriz de outras maneiras
+
+array.shape = mostrar a formatação do array (3,2 , 1,4 etc....)
+
+array.max() = identifica o maior número do array
+
+array.argmax() = retorna o índice em que o maior número se encontra
+
+array.min() = identifica o menor número do array
+
+array.argmin() = retorna o índice em que o menor número se encontra
+
+19
+
+[inicio:fim(não entra)]
+
+em arrays bidimensionais é
+
+[:]coluna [:]linha (tecnicamente era pra ser assim porém não é kkk)
+
+[ : , : ] (assim funciona daquele jeito: coluna/linha)
+
+copy() copia os valores indicados e não indica eles a outro endereço de memória
+
+numpy pode realizar slices a partir de booleanos
+
+20 
+Operações em algebra linear
+
+se você somar um array com outro array, se somarão os índices iguais ou o começo e início atribuindo valores iguais
+
+se você somar um array com um número todos os elementos serão somados por aquele número
+
+arr + arr2 = (arr[1]+arr[1])
+
+para se somar arrays diferentes eles devem ter a mesma quantidade de elementos
+
+se o numpy achar um valor que que dê erro ele tranforma em nan e não para de executar
+
+np.sqrt() = faz a raiz quadrada dos índices do array
+
+np.exp() = exponenciação dos índices
+
+np.mean() = média dos índices (todos eles)
+
+np.std() = derivação padrão dos índices (T E)
+
+np.sin() = seno dos índices
+
+np.cos() = cosseno
+
+np.tan() = tangente 
+
+
+
+PANDAS
+
+25
+O Pandas é uma importante biblioteca para a análise dados,sendo de grande importância na construção de DataFrames
+
+pd.Series() = Funciona quase como um dicionário, porém a indexação é mais abrangente e mais organizada
+
+o Series pode até criar a partir de módulos
+
+A idéia do Pandas é fazer operações aritméticas baseadas no índice
+
+26
+Series é um objeto importante porém o Data Frame é o principal
+
+Data frame = conjunto de series 
+
+np.random.seed() = números aleatórios porém iguais e padronizado
+
+você pode indexar o dataframe e series de diferentes formas 
+
+df[coluna][linha]
+
+df[[colunas em forma de listas que deseja extrair]]
+
+df.coluna( == SQL) (não se aconselha usa assim por causa dos módulos)
+
+para se criar uma coluna nova você finge que ela já existe e coloca o valor novos
+df["new"] = novo series ou dataframe
+
+df.drop() = deleta a coluna ou linha que você colocar
+
+por padrão o eixo é 0 por tanto se quiser deletar colunas se precisa colocar axis = 1
+
+se pode mudar de dois jeitos o df
+
+df = df.drop()
+
+ou df.drop(..., replace = True)
+
+df.loc[linha,coluna ] = funciona igual a indexação de um dicionário
+baseado nos nomes
+
+df.iloc[] = funciona igual uma indexação porém seguindo o indíce do numpy com números
+baseado nos números
+
+27 
+
+Se pode usar comparações e operações em um data frame que nem em uma matriz no numpy
+
+pode se procurar valores de uma coluna ou uma linah e relacionar cada um deles
+
+df[df[X] > 0][Y]]
+valores quando  algo corresponde
+
+
+para se dar mais de uma condição se coloca o and, porém o and só aceita números específicos portanto se usa 
+o correlacioanl dele o &
+
+and = &
+
+or = |
+
+
+posso mudar ou ajeitar índices depois da criação do DataFrame]
+
+df.reset_index() = adiciona o índice
+
+df.set_index() = muda o índice 
+
+28
+
+zip() = pega listas e transforma em uma tupla
+
+Multi_index = indíces multinível
+
+from_tuples = por padrão o pandas registra por lista ou dic, potanto isso muda para pegar os valores da tupla, por serem imutavéis
+
+índices multiníveis são a caracterização de abrangência de índices
+
+ex:
+
+G1   1  G2  4
+     2      5
+     3      6
+
+para se pegar uma coluna dentro de um indiíce multinível se coloca dentro do mesmo loc
+
+se for linha adiciona outor loc
+
+coluna = loc(...,col)
+
+linha = loc().loc()
+
+df.index.names = []  = para se colocar nomes nos índices se utiliza esse código
+(precisasse colocar a mesma quantidade dos índices)
+
+df.xs()= mesma função do loc porém mais curto, automático e rápido não tendo que passar por todos os subníveis até chegar naquilo requerido
+
+df.xs("o nome dos índices que você quer pegar", level(especifica em que nível está)= "o nivel do índice")
+
+29 
+
+O Pandas coloca NaN para dados ausentes
+
+df.dropna() retira os dados ausentes e as colunas que eles estão
+(para mudar a orientação se muda o axis)
+
+thresh = se refere ao quantos elementos ausentas em uma linha ou em uma coluna 
+para que ela seja excluída
+
+df.fillna() = preenche os valores ausentes com algo que você digitar
+
+method = = métodos do pandas
+
+"ffill" = forward fill = preenche os valores ausentes com o valor anterior registrado 
+
+30 
+Groupby
+
+df.groupby() = agrupa os elementos e suas variáveis e partir do índice ou coluna escolhido
+
+é separado em duas etapas
+
+primeiro se agrupa os elementos, depois realiza os cálculos
+
+df.describe() = cria um df feito por contas padrão a partir dos elementos
+
+O Pandas sabe diferenciar strings de números para se realizar as contas que não são de quantidades
+
+31
+
+Concatenação
+Concatenação basicamente cola DataFrames. 
+Tenha em mente que as dimensões devem corresponder ao longo 
+do eixo que você está concatenando. Você pode usar pd.concat e 
+passar uma lista de DataFrames para concatenar juntos:
+
+pd.concat() = Cola os dataframes em um único dataframe
+
+eles precisam ter a mesma quantidades de colunas
+
+
+Mesclar
+A função mesclar permite que você mescle os quadros de dados juntos 
+usando uma lógica semelhante à mesclagem de tabelas SQL juntas.
+
+pd.merge() = mescla os DataFrames
+
+how= = Indica como será feita as uniões
+
+"inner"= precisam ter algo em comum para mesclar, se não tiver por apdrão o índice não será mesclado
+
+"outer" = todos os elementos
+
+key= = O ponto de mesclagem
+
+
+Juntar 
+
+O bom de juntar é que ele junta todos os elementos que tenham o mesmo índice e nçao precisa se criar um novo DataFrame a partir dos outros
+
+df.join()
+
+lembrando que por padrão (inner) ele retorna valores Nan para valores ta tabela que não tenham no Data Drame secundário
+
+
+Operações
+
+df["coluna"].unique() 
+apenas pega os valores que não são copiados ou iguais de outro valor da mesma coluna
+
+df["coluna"].nunique()
+quantos valores não são repetidos
+
+df["coluna"].value_counts()
+cria uma matriz imprimindo os valores da coluna e quantas vezes ele aparee
+
+se usa os operadores 
+
+& (and) ou | (or) para duas ou mais comparações
+
+df.apply()
+pega uma função que você criou e aplica ao DataFrame
+
+é bom para usar com lambda
+
+pode se aplicar o del do python mesmo para se deletar colunas ou índices
+
+del
+
+pegar informações (básico):
+df.columns
+
+df.index
+
+pode se ordenar valores em uma ordem assim:
+
+df.sort_values(by="a coluna referência")
+
+
+Entrada e saída de dados
+
+O Pandas consegue ler diferentes arquivos para criar um DataFrame:
+
+pd.read_csv("o arquivo",sep="separador de elementos",decimal="separação de numeros decimais")
+(tem também read_excel entre outros)
+
+e tbm importar
+
+pd.to_csv("nome do arquivo que será criado.formato",sep="",decimal="",...)
+
+
+MATPLOTLIB
+
+import matplotlib.pyplot as plt (importa a lib)
+
+%matplotlib inline (configura o Ide para mostrar o gráfico na mesma linha em que ele for criado)
+
+plt.plot() (cria o gráfico a partir das variáveis dadas)
+
+plt.xlabel() você escreve oque representa o eixo x 
+
+plt.ylabel() você escreve oque representa o eixo y
+
+plt.title() você escreve o título do gráfico 
+
+color = "" muda a cor da linha do gráfico
+
+"r--" linha vermelha tracejada ("b--" azul tracejada, etc...)
+
+"*-" linha com estrela
+
+"-." linha ponto tracejada
+ 
+plt.subplot() cria gráficos separados 
+
+nrows=    número de linhas que o "gráfico" dividido terá 
+
+ncols=    número de colunas que o "gráfico" dividido terá
+
+por padrão seria assim nrows,ncols,elemento trabalhado
+
+primeiro se coloca o elemento de 1 gráfico
+
+depois coloca subplot denovo e coloca o elemento do 2 gráfico e por aí vai
+
+coloque sempre as configurações na mesma execução
+
+plt.figure()  cria uma imagem para ser modificada
+
+fig.add_axes([ largura que começa,altura..., largura do grágico,altura do gráfico ]) = adiciona a margem que o 
+
+gráfico tera equivalente ao tamanho a figura
+
+(set_xlabel, set_title) é assim a paritr da figura
+
+
+Parte 2 
+
+
+plt.subplots() funciona com POO
+
+define as variáveis a serem colocadas no subplots() ex: fig, ax = plt.subplots()
+
+e depois adiciona as configurações desejáveis
+
+
+plt.tight_layout() arruma os gráficos e evita sobreposições
+
+.figure(figsize= tamanho da figura, dpi= resolução)
+
+.savefig() salva a figura no formato desejado 
+
+plot(label= legenda que o gráfico terá)
+
+.legend() adciciona e mostra a legenda que o gráfico tem
+
+.legend(loc= define em qual canto a legenda estará)
+
+Parte 3 
+
+Pode se utilizar código de cores para colocar no color=
+
+linewidth= grossura da linha
+
+alpha= transparência
+
+linestyle= estilo da linha 
+
+vale apena colocar desse jeito o color e o ls do que como string por causa da variadade que tu ganha
+
+.set_xlim() limite do eixo x
+.set_ylim() limite do eixo y
+
+Tipos de gráficos:
+plt.scatter() cria um gráfico porém apenas com as marcações em pontos específicos para marcação
+
+plt.hist() gráfico de variação e utilização dos elementos 
+
+plt.boxplot() gráfico em forma de "caixas"
+
+
+
+Seaborn
+
+Visualização de dados mais rápida, fácil e eficiente 
+
+sns.load_dataset() careega um dataset que por padrão o seaborn tem, ex : "tips"
+
+sns.distplot() faz o histograma de uma coluna do DataSet ou Data Frame
+
+kde = curva de intensidade 
+
+bins = distribuição de marcações de agrupamento
+
+sns.jointplot(x,y,data,) faz o gráfico porém a partir da comparação de dois elementos(colunas) diferentes 
+data= o data set
+
+kind = o tipo de gráfico formado
+
+scatter = marcação por pontos
+
+reg = regressão linear
+
+hex = mapa de calor em formato hexagonal
+
+sns.pairplots() realiza a construção de gráficos de todas as colunas numéricas
+
+hue = adiciona informação não numérica para comparações dos gráficos (como se transformasse em 0 e 1)
+
+palette =  paleta de cores que o seaborn tem, é só escolher uma e colocar 
+
+sns.rugplot() indica aonde tem informação no gráfico(base para o kde)
+
+sns.kdeplot() cria uma curva kde a partir da informação dada
+
+Plots categóricos
+
+sns.barplot() por padrão mostra a média dos elementos 
+
+sns.countplot() quantidade de cada elemento,(contar)
+
+sns.boxplot() mostra a porcentagem da onde os dados estão localizados
+
+orien= orientação do gráfico
+
+sns.violinplot() = variação não-paramétrica espelhada estimando a média
+
+split= em vez de espelhar, quando se coloca o hue ele divide o "violino" com as variações
+
+
+sns.stripplot() = marca apenas onde tem informação com pontos(como rugplot ou scatter)
+
+jitter= espalha o alocamento dos dados
+
+split = o split também serve para dividir a informação do hue
+
+sns.swarmplot() = coloca dados que estão pertos um do lado do outro
+
+sns.factorplot() = se tranforma em qualquer outro com o kind
+
+Plots matriciais
+
+sns.heatmap() = faz uma mapa de calor a partir de correlações 
+
+cmap=  paleta de cores
+
+annot= (bool) diz se quer que mostre os números de cada "quadrado ou não"
+
+pivot_table = organiza o DataSet da forma que você desejar, como se mudasse os índices e colunas de posição
+
+linecolor=  cor da linha que divide os quadrados
+
+linewidths= espessura das linhas de divisão
+
+sns.clustermap() = heatmap com agrupamento de dados que ele julga relacional e importante
+
+sns.lmplot() = modelo de regressão linear dos dados 
+
+markers= o tipo de marcador no modelo (principalmente utilizados em gráficos com scatter)
+
+_kws = serve para mudar as configurações e variáveis de algo como tamanho, cor tranparência
+
+col= separa o gráfico a partir da quantidade de informações que o coluna nova tem
+
+row= separa o gráfico e adiciona outra variável de coluna aos gráficos
+
+aspect= aspecto do gráfico
+
+size= tamanho
+
+Pair grid
+
+sns.PairGrid() cria gráficos vazios dos valore e você a partir de funçõe svai moldando eles
+
+map()(seaborn), mapeia os gráficos e realiza a determinada função
+
+map_diag() = mapeia o gráfico na diagonal
+
+map_upper() = map parte acima
+
+map_lower() = map parte abaixo
+
+sns.pairplot() parece um pairplot porém com formação padrão
+
+sns.FacetGrid() igual o PairGrid porém a parte diferente é a formação e que você define as colunas ]
+
+Paleta de cores
+
+sns.set_style() selecione 1 dos 5 estilos de grade que o sns tem 
+
+"dark, darkgrid, white, whitegrid,ticks"
+
+dark...,white..., muda a cor da borda e o fundo do gráfico
+
+...grid, adiciona marcações no fundo do gráfico para identificar o eixo y
+
+ticks, especifica marcações dos eixos 
+
+sns.despine() tira as bordas que não tem marcações do gráfico
+para tirar uma borda especifica coloca-se o lado = true, left= True...
+
+para alterar o tamanho do gráfico se utiliza plt.figure(figsize=())
+
+size e aspect também servem para alterar o tamanho da figura 
+
+sns.set_context() serve para configurar automaticamente o tamanho do gráfico baseado aonde sera utilizado o gráfico que vai ser gerado 
+"paper,notebook,poster,talk"
+font_scale= a escala do texto do gráfico 
+
+
+Visualização de dados embutidos ao pandas
+
+
+O Pandas tem otimização para criação de gráficos
+
+histograma =df.hist()
+
+df.plot tem vários estilos
+
+df.plot.area() = área ocupada
+
+df.plot.bar() = quantidade em barras(quase um histograma)
+
+stacked= True
+
+df["coluna"].plot.hist()
+
+df.plot.line() linha de cada valor do df
+
+df.plt.scatter() gráfico em pontos
+
+c=  gradiente de cor por uma terceira variável "C"
+
+cmap= paleta do gráfico matricial 
+
+s= escala dos tamanhos das bolinhas 
+
+df.plot.box()  gráfico em forma de caixa
+
+df.plot.hexbin() gráfico em forma hexagonal
+
+gridsize= tamanho da grade do gráfico hexagonal
+
+cmap=...
+
+df.plot.kde()  gráfico de curva de densidade kernel
+
+
+Plotly e cufflinks
+
+para importar o plotly é 
+
+from plotly.offline import download_plotlyjs,init_notebook_mode,plot, iplot
+
+
+para importar o cufflinks é 
+
+import cufflinks as cf
+
+gráfico com o pyplot é:
+
+df.iplot()
+kind= tipo de gráfico
+
+x=, y=
+
+mode= modo de exibição
+"markers" = exibição por pontos 
+
+kind= tipo de gráfico
+"bar" = gráfico por barras
+"spread" = comparação de duas colunas(x-y)
+"hist" = histograma
+"bubble" 
+"surface" = gráfico 3D (tridimensional)
+
+colorscale= escala de cores do gráfico
+"rdylbu"= red yellow and blue
+
+
+df.scatter_matrix() = semelhante ao pairplot
+
+Mapas geográficos
+
+para fazer mapas geográficos se precisa de mais duas importações
+import chart_studio.plotly as py
+import plotly.graph_objs as go
+
+Primeiro passo:
+
+Criar um dicionário
+dict()
+type= o tipo do dicionário
+
+location= as informações geográficas, 
+
+locationmode= o tipo de informação buscada (o nome dado pelo DataFrame)
+
+colorscale= escala de cor do mapa
+
+text = os textos que serão utilizados na informação
+
+z = a escala de cor do mapa
+
+colorbar={"title":"título"} = título da barra de cores
+
+marker = mudanças nas linhas de divisão de território
+marker = dict(line=dict(color="rgb(código)",width=2"comprimento da linha"))
+
+Segundo passo:
+
+criar um layout (o desenho do mapa)
+
+layout = dict(geo={"scope":"O mapa"},title="título do mapa")
+geo = dict(scope="Mapa",Showlakes= "Mostrar os lagos(T or F)",lakecolor="código de cor(cor dos lagos no código)")
+
+depois se usa o go.Figure para criar o mapa
+
+choromap = go.figure(data=[data],layout=layout)
+
+
+
+
+
+MACHINE LEARNING 
+
+                                ->               Dados de teste                                           
+Aquisição de dados -> Limpeza dos dados                                       -> teste modelo -> uso prático 
+                                -> Dados de treinamento e construção do modelo
+
+Supervised learning
+
+Unsupervised learning
+
+Reinforced Learning
+
+
+Teoria regressões lineares
+
+calcular uma regressão é calcular a menor distância entre dois pontos
+
+O método clássico(m[etodo dos mínimos quadrados) procura obter a curva que resulte na menor soma das distâncias quadradas de todos os pontos até ela.
+
+Parâmetros
+
+x= oque vai predizer 
+
+y= oque vai ser predito
+
+
+importar sklearn:
+
+from sklearn.model_selection import train_test_split
+
+train_test_split() = divide os valores de X e Y em pares correlacionais para realizar o treino (supervised learning)
+
+test_size= % dos dados em teste e treino
+
+random_state= o "peso" de treino e teste para geração do modelo 
+
+esse método retorna 4 valores como uma tupla: (x_train, x_test, y_train,y_test)
+então será melhor colocar assim para desempacotar os valores 
+
+x_train, x_test, y_train,y_test = train_test_split(...)
+
+próximo passo é criar uma instância o modelo 
+
+from sklearn.linear_model import LinearRegression
+
+lm = LinearRegression()
+
+lm.fit(x_train,y_train) = permite encontrar os parâmetros
+
+lm.intercept_ = onde cruza o eixo y
+
+lm.coef_ = os coeficientes
+
+coefs =pd.DataFrame(lm.coef_,X.columns, columns= ["Coefs"])
+
+coeficientes relacionam a mudança em quantidade com oque está sendo dado 
+
+lm.predict() prediz o valor das casas passadas a paritir do modelo criado 
+
+sns.scatterplor(y_test,predict) = gráfico que verifica a "porcentagem de acerto" do modelo 
+
+sns.distplot(y_test-predict) = variabilidade de acerto(quanto mais quantidades em 0 melhor)
+
+Métricas de avaliação de regressão 
+
+O erro absoluto médio (MAE) é a média do valor absoluto dos erros
+
+Média do quadrado do erro (MSE) é a média dos erros quadrados 
+
+Raiz do erro médio quadrado (RMSE) é a raiz quadrada da média dos erros quadrados 
+
+para importar as métricas é :
+
+from sklearn import metrics
+
+MAE = metrics.mean_absolute_error(valorx,valory)
+
+MSE = metrics.mean_squared_error(valorx,valory)
+
+RMSE = np.sqrt(metrics.mean_squared_error(valorx,valory))
+
+
+
+Balanço viés-variância
+
+Faz a média dos treinos feitos e determina qual Machine Learning é mais precisa para a estimativa daqueles dados
+
+Quanto menor o viés e menor a variância melhor 
+
+As vezes aumentar a complexidade dos dados não melhora o modelo, pois se você fizer muito complexo os dados se adequam
+apenas aos dados de treino
+não captura o comportamento geral dos dados
+
+Sempre tentar chegar na média entre viés (Bias) e variância(Variance)
+
+
+
+Regressão logística 
+
+No curso usara regressão logística como método de classificação
+
+ex: Filtro de Spam
+
+é um Unsupervised Learning
+
+o programa vai tentar achar semelhança entre os dados e separa-los em categorias e classificações 
+
+não poderia utilizar regressão linear para isso, pois as probabilidades só seriam abaixo de 0 ou acima de 100%
+
+por isso se utiliza a curva de regressão logística
+
+ela é baseada na função sigmóide = f(x) = 1/1+(e)^x
+
+
+a avaliação de desempenho do modelo é diferente da de regressão linear
+
+a principal forma de avaliar é a matriz de confusão
+
+Estimativa de acertos
+
+TruePositive(TP)
+
+TrueNegative(TN)
+
+FalsePositive(FP)
+
+FalseNegative(FN)
+
+% de acertos de Sim e Não
+
+Precisão = (TN+TP)/total = acerto
+
+df.isnull() verifica se o dado é nulo ou não
+
+É muito relevante estudar os dados primeiros para depois realizar ML
+
+
+df.dropna() deleta os índices com valores nulos 
+
+pd.get_dummies() transforma os valores de letras em números "binários" (0,1)
+
+drop_first =  deleta a primeira coluna da divisão de valores
+
+from sklearn.model_selection import train_test_split
+
+o mesmo da regressão linear 
+
+from sklearn.linear_model import LogisticRegression
+
+Lr = LogisticRegression()
+
+Lr.fit(x_train,y_train)
+
+Lr.predict(x_Test)
+
+from sklearn.metrics import classification_report = classificação de acertos
+
+classification_report(y_test,predict)
+
+from sklearn.metrics import confusion_matrix 
+
+confusion_matrix(y_test,predict) = matrix de erros e acertos
+
+
+K Nearest Neighbors (KNN)
+
+Algoritmo de treino:
+1:Guarde os dados
+
+Algoritmo de teste/preditor:
+1:Calcule as distâncias do x até os demais pontos
+2:Organize os dados em ordem crescente de distância
+3:Classifique a classe de acordo com a maioria dos primeiros "K" valores
+
+O parâmetro "K" do modelo pode afetar a classificação do mesmo
+
+Pros:
+    Muito simples
+    Processo de treino trivial
+    Funciona bem com muitas classes
+    Fácil de adicionar mais dados
+    Poucos parâmetros(K e métrica de distância)
+Contras:
+    Elevado custo computacional para predição(pior para grande conjunto de dados)
+    Não muito bom em dados com múltiplas dimensões(muitos parâmetros)
+    Parâmetros categóricos não funcionam muito bem
+
+
+Normalização de dados é fundamental para o KNN
+
+from sklearn.preprocessing import StandardScaler
+
+excutar:
+
+scaler = StandardScaler()
+
+Organizar os dados de forma desejada:
+
+df_p = scaler.fit(df.drop("TARGET CLASS",axis=1))
+não esqueça do axis = 1 para realizar o crop da coluna
+
+
+Transformar os dados :
+
+df_p = scaler.transform(df.drop("TARGET CLASS",axis=1))
+
+realiza a média de desvio padrão dos dados
+
+depois se cria um DataFrame com os valores transformados fomando o x do train_test_split
+
+e o y o valor tirado do df 
+
+o próximo passo é importar o classificador de KNN
+
+from sklearn.neighbors import KNeighborsClassifier
+
+KNN = KNeighborsClassifier(n_neighbors=1) método de classificação
+n_neighbors = número de "vizinhos" para a classificação 
+
+from sklearn.metrics import classification_report, confusion_matrix(mesmo que o outro)
+
+
+
+Árvores de decisão
+
+Estuda as variáveis do contexto para decidir e predizer a tomada de decisões a partir das variáveis
+
+O modelo serve para predizer oque acontecerá    
+
+Uma forma intuitiva para se fazer isso é utilizar arvores de decisão
+
+Na árvore temos:
+
+Nós:
+    Divide a árvore por um valor de um certo atributo
+Ramos:
+    Saída de um nó
+Raiz:
+    Nó que faz a primeira divisão
+Folhas:
+    Nó final que toma a decisão
+
+Entropia e ganho de informação são as bases matemáticas para escolher a melhor divisão
+
+O algoritmo fará a divisão sempre na classe que apresenta o maior ganho de "informação"
+
+Podemos criar árvores usando divisões diferentes do conjunto de dados
+
+Para melhorar o desempenho das árvores de decisão, podemos também usar amostragens aleatórias de escolhas de parâmetros para divisão:
+    Um novo conjunto  de parâmetros é escolhido aletoriamente para cada árvore a cada desisão de si mesma.
+    O algoritmo escolhe 1 dentre "m" parâmetros.
+    Para classificação, normalmente usamos "m" como raiz de "p"
+
+Qual o ponto? 
+    Supondo que a gente tenha um parâmetro muito forte. Quando usamos o processo normal de construção de árvores, a maioria
+    das árvores usarão o mesmo parâmetro como raiz, o que resultará em árvores muito coreelacionadas
+
+    Tornando o processo de escolha de nós estocástico, nossas florestas aleatórias serão descorrelacionadas e isso resultará na redução da variância do modelo 
+
+Começaremos explorando os dados de pacientes corcundas e tentando predizer se uma cirurgia será ou não suficiente.
+
+Após isso, iremos para um projeto utilizando dados reais do Lending Club, para tentar predizer o risco de crédito de alguns usuários.
+
+Primeiro se importa as bibliotecas
+
+O próximo passo é separar como sempre o modelo em treino e teste
+
+
+
+Depois se importa o classificador da árvore de decisão
+
+
+from sklearn.tree import DecisionTreeClassifier
+
+o próximo passo é realizar o fit que nem os os outros modelos 
+
+Dt = DecisionTreeClassifier()
+
+Dt.fit(x_train,y_train)
+
+depois fazer o predict 
+
+Dt.predict(x_test)
+
+como é classificação se usa o classification_report e confusion_matrix para ver a performance do modelo
+
+
+O próximo passo para melhorar a performance do modelo é utilizar random forest
+
+from sklearn.ensemble import RandomForestClassifier
+
+rfc = RandomForestClassifier(n_estimators=número de classificadores)
+
+SVM
+
+Support vector machines(SVMs) são métodos de Machine Learning baseados em aprendizado supervisionado que analizam os dados e reconhecem padrões, usados para a classificação e regressão
+
+Dado um conjunto de dados de treino, cada um marcado com uma classe pertencendo a uma categoria, SVM cria um modelo que assimila novos exemplos em uma das categorias, fazendo uso de um classificador não probabilistico
+
+Um modelo SVM é a representação  dos exemplos como pontos no espaço, mapeados de forma que as categorias são divididas com a maior distância possível entre elas
+
+Novos modelos são mapeados de acordo com a zona que caírem 
+
+
+Para dividir os dados em categorias o SVM utiliza um "hiperplano" para a divisão dos dados 
+
+Desejamos escolher o "hiperplano" que maximize a margem entre as classes 
+
+Os ponros que tocam as margens são conhecidos como vetores de suporte(Suppor Vectors)
+
+Ele sempre tenta criar um hiperplano linear
+
+Podemos expandir esse conceito para dados não linearmente separáveis através do "kernel trick"
+
+O "kernel trick" se baseia em aplicar uma transformação nos dados e leva-los para um espaço dimensional superior onde lá ele possa ser separado linearmente e depois, os trazermos de volta aplicando a inversa 
+
+Começaremos estudando SVMs usando um conjunto de dados que tenta prever se um tumor será maligno ou benigno
+
+Então, no nosso projeto, aplicaremos os mesmos conceitos no famoso conjunto de dados de íris 
+
+Aprenderemos também como otimizar nosso modelo usando o "GridSearch"
+
+
+Notoriamente o processo de treino é que nem dos outros modelos a única coisa que muda é o modelo importado
+
+from sklearn.svm import SVC
+
+o professor disse que era pra dar um resultado baixo de primeira porém o modelo feito teve precisão de 93%
+
+por isso se utilizará o gridsearch, para testar várias combinações de vários parâmetros conjuntos 
+(ele é um dicionário)
+
+p_grid = {"C":[0.1,1,10,100,1000],"gamma":[1,0.1,0.01,0.001,0.0001],"kernel":["rbf"]}
+
+C = Custo de classificações, custo de erro 
+
+gamma = tipo do kernel, altera o comportamento da função gaussiana 
+
+kernel = o tipo
+
+from sklearn.model_selection import GridSearchCV
+
+grid = GridSearchCV(SVC(),p_grid,refit=True,verbose=int)
+
+refit = permite que o programa se ajuste "sozinho" 
+
+verbose = variância das variáveis
+
+K Means Clustering é um método de Machine Learning baseado em aprendizado não supervisionado que tentará 
+agrupar seus dados em grupos baseados em características semelhantes.
+
+São usados para: 
+    Agrupamento automático de documentos 
+    Agrupamento de clientes 
+    Segmentação de mercado 
+    
+    
+O objetivo é dividir os dados em K grupos distintos baseado nos parâmetros
+
+O algoritmo:
+    Escolher um número K de grupos(clusters)
+    Aleatoriamente definir uam classe para todos os pontos 
+    Até os clusters pararem de mudar, faça:
+        Para cada cluster, obtenha o centr[oide do mesmo calculando a média dos vetores dos pontos do cluster 
+        Defina cada ponto ao cluster na qual o centróide é o mais próximo.
+
+Escolhendo valor para K
+
+Não existe uma resposta fácil para escolher o melhor valor para K
+Uma forma é o método do cotovelo 
+
+Primeiro, calcule a soma dos erros quadrados(SEQ) para alguns valores de K(por exemplo 2,4,6)
+
+A soma dos quadrados dos eros é definido como o quadrado das distâncias entre cada membro e o seu centroide
+
+Se você plotar K vs SEQ, você verá que o erro diminui à medida que K aumenta 
+
+A ideia do método do cotovelo é escolher um valor de K na qual o SEQ caia abruptamente 
+
+Isso produz um "efeito cotovelo"
+
+
+Vamos trabalhar utilizando o método de geração de dados do Scikit-Learn para criar alguns cluster e testá-los usando K-means 
+
+
+No projeto, trabalharemos com dados reais tentando criar agrupamentos de universidades baseadas em seus parâmetros e classificá-las como públicas ou privadas.
+
+Em from sklearn.datasets há um monte de datasets para treinamento e realização 
+
+
+from sklearn.datasets import make_blobs = dados artificiais
+
+data = make_blobs(n_samples=200,n_features=2,centers=4,cluster_std=1.8,random_state=50)
+
+n_samples= número de dados gerados para serem classificados
+
+n_features= número de parâmetros dos dados
+
+centers= número de centros 
+
+cluster_std= desvio padrão dos dados 
+
+random_state= variável aleatória para gerar os dados 
+
+plt.scatter(data[0][:,0],data[0][:,1],c=data[1],cmap="cool")
+
+data[0][:,0] = parâmetros da primeira coluna
+
+data[0][:,1] = parâmetros da segunda coluna 
+
+c=data[1] = mudança de cor
+
+cmap = paleta de cores 
+
+from sklearn.cluster import KMeans = improta  o classificador 
+
+
+K_means = KMeans(n_clusters=4) 
+
+n_clusters = número de centróides 
+
+K_means.fit(data[0])
+
+K_means.cluster_centers_  = onde estão localizados os centros 
+
+K_means.labels_ = valores que ele classificou
+
+
+Ánalise do componente principal(PCA)
+
+Vamos Discutir as ideias básicas port trás do PCA 
+
+é um método não supervisionado estatístico, usado para examinar realções entre um conjunto de variáveis, 
+com um objetivo de identificar um estrutura básica por trás das mesmas
+
+Também é conhecido como análise de fatores
+
+Enquanto uma regressão determina a linha que melhor se ajusta ao conjunto de dados, PCA determina o melhor conjunto ortogonal de linhas para ajustar o nosso modelo 
+
+Ortogonal significa "perpendicular". Estamos procurando então as linhas perpendiculares no n_dimensional 
+
+Espaço n-dimensional é o espaço vetorial do grupo de parâmetros.
+    Existirão tantas dimensões nesse espaço vetorial quanto parâmetros no seu conjunto de dados. Assim, um conjunto com 4 variáveis terá 4 dimensões
+
+Os componentes são transformações lineares dos parâmetros iniciais, de forma que a maior variância no conjunto de dados apareça no primeiro eixo, a maior variância no segundo eixo, etc...
+
+Se usarmos essa técnica em um conjunto de dados com um número muito grande de variáveis, podemos comprimir a variância explicada para apenas alguns componentes 
+
+A parte mais díficil no PCA é interpretar os componentes 
+
+df = pd.DataFrame(cancer["data"],columns=cancer["feature_names"])
+
+from sklearn.preprocessing import StandardScaler = pré processamento 
+
+scaler = StandardScaler()
+
+
+scaler.fit(df)
+
+s_data= scaler.transform(df)
+
+from sklearn.decomposition import PCA = Instância da importação
+
+pca= PCA(n_components=2) 
+
+n_components = número de componentes para a ánalise
+
+pca.fit(s_data)
+
+x_pca = pca.transform(s_data)
+
+plt.figure(figsize=(12,8))
+sns.scatterplot(x_pca[:,0],x_pca[:,1],hue=cancer["target"])
+plt.xlabel("Primeiro componente principal")
+plt.ylabel("Segundo componente principal")
+
+pca.components_ = componentes 
+
+
+Sistemas de recomendação
+
+Um sistema completo de recomendação é extremamente complexo e dependente de dados 
+
+Sistemas completos de recomendação exigem um conhecimento avançado de álgebra linear
+
+Os dois tipos mais comuns de sistemas de recomendação são conteúdo-dependente e filtragem colaborativa 
+    Filtragem colaborativa produz recomendações baseadas no conhecimento das atitudes em relação aos itens. Tal método usa o "conhecimento em massa" para recomendar items.
+
+    Sistemas baseados em conteúdo são sistemas que focam nos atributos dos itens e dão recomendações baseadas nas similaridades dos mesmos
+
+No geral, filtragem colaborativa é mais comunente usado do que o conteúdo-dependente porque o primeiro consegue melhores resultados e é mais fácil de entender.
+
+O algoritmo também tem a capacidade de aprender por si só, oque significa que pode começar a aprender quais parâmetros usar
+
+Filtragem colaborativa pode ser dividida em: filtragem colaborativa por memória e filtragem colaborativa por modelo 
+
+Depois irá implementar uma filtragem colaborativa por modelo. Tal sistema fará o uso  de decomposição singular de valor e computando a similaridade do cosseno
+
+Para a implementação em Python, nós criaremos um sistema conteúdo-dependente para um conjunto de dados de filmes 
+
+Esses dados de filmes é em geral o primeiro contato que estudantes tem quando começam a aprender sobre sistemas de recomendação
+
+É um pouco maior quando comparado com outros conjuntos de dados que já trabalhamos
+
+Sistemas avançados de recomendação Udemy/0-Python-Data-Science-and-Machine-Learning-Bootcamp/5. Machine Learning/Sistemas de recomendação/Sistemas avançados de recomendação.ipynb
+C:/Users/Enzo/Downloads/Programação Python-backup/Programação Python-backup/Udemy/0-Python-Data-Science-and-Machine-Learning-Bootcamp/5. Machine Learning/Sistemas de recomendação/Sistemas avançados de recomendação.ipynb
+
+df.corrwith(correlação entre dois dataframes)
+
+correlação entre as pessoas que assistiram os dois filmes e deram uma avaliação
+
+
+o que se faz é correlacionar os filmes de forma justa para chegar a um meio termo para a recomendação
+
+
+Processamento de linguagem natural 
+
+Tem por objetivo: 
+    Compilar os documentos
+    Categorizá-los
+    Comparar seus parâmetros
+
+Você pode vetorizar e categorizar a partir da contagem das palavras :
+
+"Casa Azul"(vermelha,azul,casa)(0,1,1)
+
+"Casa vermelha"(vermelha,azul,casa)(1,0,1)
+
+um documento representado por um vetor de palavras é chamado de "saco de palavras"(bag of words)
+
+Você pode usar a similaridade do cosseno no vetores para determinar quão similares são.
+
+Pode-se otimizar a técnica do saco de palavras pela frequênica que elas aparecem no conjunto inteiro de documentos
+
+Para isso, fazemos uso do TF-IDF: Term Frequency - Inverse doument frequency (Frequência do termo - inverso da frequência do documento)
+
+Term frequency = Importância do termo no documento 
+
+TF(d,t) = Número de ocorrências do termo t  no documento d
+
+Inverse document frquency - importância do termo no conjunto de documentos
+
+IDF(t) = log(D/t)
+    D = número total de documentos 
+    T = número de documentos com o termo 
+
+Primeiro tem que instalar o nltk e depois o stopwords
+
+import string
+
+from nltk.corpus import stopwords
+
+stopwords.words("english") = palavras que são muito utilizadas e não agregam nada no modelo
+
+
+sem_pont = [char for char in mess if char not in string.punctuation] = tira as pontuações
+
+"".join(sem_pont) = junta os caracteres
+
+cln_mess = [word for word in tst.split() if word.lower() not in stopwords.words("english")] = tira as palavras muito utilizadas
+
+def text_process(x):
+    nopunc = [char for char in x if x not in string.punctuation]
+    nopunc = "".join(nopunc)
+
+    sms = [word for word in nopunc.split() if word.lower() not in stopwords.words("english")]
+    return sms
+
+método para retirar pontuação e palavras mais usadas da mensagem 
+
+o método de tokenização serve para assimilar palavras com o mesmo significado só que em tempo ou estados diferente para tornar o processo de classificação mais rápido e eficiente
+
+
+Vetorização serve para medir a probabilidade da mensagem ser atribuída como spam e como mensagem 
+
+1- contar quantas vezes ocorre uam palavra em cada mensagem (conhecida como frequência de termo)
+
+2- Pesar as contagens, de modo que tokens frequentes recebem menor peso frequência inversa do documento 
+
+3- Normalize os vetores para o comprimento da unidade, para abstrair o comprimento do texto original
+
+Vai se utilizar o CountVetorizer do sklearn
+
+from sklearn.feature_extraction.text import CountVectorizer = faz a vetorização de forma que surge uma matriz esparsa
+
+bow_transformer = CountVectorizer(analyzer=text_process).fit(df["Message"])
+
+analyzer = atribui uma função apra tratar os dados 
+
+.fit() os dados que irão arrumar a matriz e serão tranformados 
+
+print(len(bow_transformer.vocabulary_))
+
+.vocabulary_ = palavras únicas
+
+print(bow_transformer.get_feature_names()[4068])
+
+.get_feature_names() mostra a palavra que esta localizado no índice 
+
+messages_bow = bow_transformer.transform(df["Message"]) transforma as palavras em vetores 
+
+print(messages_bow.nnz) = quais valores não são zeros
+
+from sklearn.feature_extraction.text import TfidfTransformer = método de calcular frequência
+
+tfidf_tranformer = TfidfTransformer() instância
+
+tfidf_tranformer.fit(messages_bow) = arrumar a matriz conforme o bow
+
+tfidf_tranformer.transform() = tranforma o bow para tf-idf
+
+
+Naive bayes = método probabilístico
+
+from sklearn.naive_bayes import MultinomialNB
+
+from sklearn.pipeline import Pipeline
+
+separa os métodos de Ml por etapas
+
+
+Big Data
+
