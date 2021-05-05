@@ -11,9 +11,9 @@ class coment:
         chromeoptions.add_experimental_option("prefs",prefs)
         chromeoptions.add_argument("--start-maximized")
         # chrome_options.add_argument("--headless")
-        self.driver = webdriver.Chrome("C:/Users/Enzo/Downloads/Programação Python-backup/Programação Python-backup/.vscode/chromedriver.exe",chrome_options=chromeoptions) 
+        self.driver = webdriver.Chrome("C:/Users/Enzo/Downloads/Programação Python-backup/Programação Python-backup/.vscode/chromedriver_win32 (4)/chromedriver.exe",chrome_options=chromeoptions) 
     def login(self):
-        self.driver.get("https://www.facebook.com/bianca.gutierez.77/posts/1211931945819617")
+        self.driver.get("https://www.microsoft.com/pt-br/microsoft-teams/log-in")
     def email(self):
         self.driver.find_element_by_id("email").send_keys(email)
     def senha(self):

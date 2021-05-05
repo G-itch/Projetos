@@ -27,4 +27,3 @@ while True:
         keyboard.press("enter")
     elif dec == b'FF52AD\r\n':
         keyboard.press("f")
-              ffff 
