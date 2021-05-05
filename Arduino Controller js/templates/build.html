@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Controller</title>
+    <link rel="icon" type="image/x-icon" href="\static\images\remote_control_32px.png">
+    <style>
+        body{
+        position: relative;
+        width: 1440px;
+        height: 1024px;
+        background: #ffffff url("{{ url_for('static',filename='images/perple.jpg') }}");
+        background-repeat: no-repeat;
+        background-position:left;
+        background-size: cover;
+        }
+        .content{
+            position: absolute;
+            left: 10.54%;
+            right: 6.54%;
+            top: 13.87%;
+            bottom: 13.87%;
+            background: #AFF0CA;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+        }
+        .Título{
+            position: absolute;
+            width: 267px;
+            height: 58px;
+            left: 216px;
+            top: 2px;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 48px;
+            line-height: 58px;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .Text1-rec{
+            position: absolute;
+            left: 7.54%;
+            right: 47.07%;
+            top: 17.57%;
+            bottom: 50.54%;
+
+            /* side bar */
+
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        .What{
+            position: absolute;
+            left: 9.47%;
+            right: 58.63%;
+            top: 15.62%;
+            bottom: 72.43%;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            /* identical to box height */
+
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .nsei1{
+            position: absolute;
+            left: 10.21%;
+            right: 46.9%;
+            top: 23.51%;
+            bottom: 65%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .Text2-rec{
+            position: absolute;
+            left: 7.54%;
+            right: 47.07%;
+            top: 54.05%;
+            bottom: 3.38%;
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        .How{
+            position: absolute;
+            left: 10.47%;
+            right: 69.26%;
+            top: 51.62%;
+            bottom: 37.43%;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            /* identical to box height */
+
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .nsei3{
+            position: absolute;
+            left: 10.47%;
+            right: 45.84%;
+            top: 61.32%;
+            bottom: 9.73%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .Text3-rec{
+            position: absolute;
+            left: 55.44%;
+            right: 1.26%;
+            top: 3.51%;
+            bottom: 3.38%;
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        .Visu{
+            position: absolute;
+            left: 58.79%;
+            right: 20.6%;
+            top: 2.24%;
+            bottom: 85.81%;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .nsei4{
+            position: absolute;
+            left: 58.79%;
+            right: 7.2%;
+            top: 12.19%;
+            bottom: 76.08%;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .nsei5{
+            position: absolute;
+            left: 58.63%;
+            right: 14.57%;
+            top: 27.22%;
+            bottom: 65.54%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            /* identical to box height */
+
+            text-align: justify;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .Tinker{
+            position: absolute;
+            left: 59.3%;
+            right: 34.84%;
+            top: 36.49%;
+            bottom: 54.05%;
+        }
+        .Circuit{
+            position: absolute;
+            left: 45.23%;
+            right: -25.54%;
+            top: 29.46%;
+            bottom: 5.54%;
+        }
+        .side_bar{
+            position: absolute;
+            width: 120px;
+            height: 590px;
+            left: 92px;
+            top: 217px;
+        }
+        .nav-items{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 0%;
+            bottom: 0%;
+            background: #8D65FF;
+            border-radius: 25px;
+        }
+        #home_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 0%;
+            bottom: 80%;
+            background: #8D65FF;
+            border-radius: 25px 25px 0px 0px;
+        }
+        #build_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 20%;
+            bottom: 60%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #script_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 40%;
+            bottom: 40%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #about_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 60%;
+            bottom: 20%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #github_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 80%;
+            bottom: 0%;
+            background: #8D65FF;
+            border-radius: 0px 0px 25px 25px;
+        }
+        #github_btn:hover,#about_btn:hover,#script_btn:hover,#build_btn:hover,#home_btn{
+            cursor: pointer;
+        }
+        .Home{
+            position: absolute;
+            left: 26.67%;
+            right: 26.67%;
+            top: 30.94%;
+            
+        }
+        .Build{
+            position: absolute;
+            left: 29.17%;
+            right: 29.17%;
+            top: 26.1%;
+            bottom: 66.1%;
+        }
+        .Script{
+            position: absolute;
+            left: 24.17%;
+            right: 24.17%;
+            top: 27%;
+
+        }
+        .About{
+            position: absolute;
+            left: 29.17%;
+            right: 29.17%;
+            top: 30.1%;
+        }
+        .Github{
+            position: absolute;
+            left: 22.5%;
+            right: 22.5%;
+            top: 26%;
+        }
+    </style>
+</head>
+<body onload="zoom()">
+    <section>
+        <div class = "content">
+        <h1 class ="Título">Build steps</h1>
+        <div class ="Text1-rec"></div>
+        <h1 class ="What">What you will need?</h1>
+        <p class="nsei1">1x Arduino or ESP <br>1x IR sensor<br>1x Controller<br>1x Protoboard<br>3x Wires</p>
+        <div class ="Text2-rec"></div>
+        <p class ="How">How to build:</p>
+        <p class = "nsei3">-Attach the IR sensor in the protoboard<br>
+            <br>
+            - Connect the wires in the sequence:<br>
+            1: PIN 4<br>
+            2: GND<br>
+            3: VCC<br>
+            <br>
+            -Plug the Arduino in your desktop</p>
+        <div class="Text3-rec"></div>
+        <p class="Visu">Visualization:</p>
+        <p class="nsei4">&emsp;You can solder the wires directly in the sensor if 
+            you want, the two options are valid.</p>
+        <p class="nsei5">Your circuit will be like that:</p>
+        <div class="Tinker"><img src="{{ url_for('static',filename='images/Tinker.svg') }}" alt=""></div>
+        <div class="Circuit"><img src="{{ url_for('static',filename='images/Circuit.svg') }}" alt=""></div>
+        </div>
+        <nav class = "side_bar">
+            <ul class="nav-items"> 
+                <li>
+                    <form action="/home" method="POST">
+                    <input type="hidden" name="" value="{{ url_for('index') }}">
+                    <button>
+                    <a class= "btn" id = "home_btn">
+                        <div class="Home"> <img src="{{ url_for('static',filename='images/Home.svg') }}" alt= ""> </div>
+                    </a></button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/build" method="post">
+                    <input type="hidden" name="build" value="{{ url_for('index') }}">
+                    <button>
+                    <a class="btn" id="build_btn">
+                        <div class="Build"><img src="{{ url_for('static',filename='images/Build.svg') }}" alt= ""> </div>
+                    </a></button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/script" method="post">
+                    <input type="hidden" name="script" value="{{ url_for('index') }}">
+                    <button>
+                    <a class= "btn" id="script_btn">
+                        <div class="Script"><img src="{{ url_for('static',filename='images/Script.svg') }}" alt= "">  </div>
+                    </a>
+                    </button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/about" method="post">
+                    <input type="hidden" name="about" value="{{ url_for('index') }}">
+                    <button>
+                    <a class= "btn" id="about_btn">
+                        <div class="About"><img src="{{ url_for('static',filename='images/About.svg') }}" alt= "">  </div>
+                    </a>
+                    </button>                        
+                </form>
+                </li>
+                <li>
+                    <a class= "btn" id="github_btn" href="#">
+                        <div class="Github"><img src="{{ url_for('static',filename='images/Github icon.svg') }}" alt= "">  </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+</section>
+<script>
+function change1(f){
+    f.style.backgroundColor = "#AC8FFF";
+}
+function change2(f){
+    f.style.backgroundColor = "#8D65FF";
+}
+function addeventos(){
+    var home = document.getElementsByClassName("btn")[0];
+    var build = document.getElementsByClassName("btn")[1];
+    var script = document.getElementsByClassName("btn")[2];
+    var about = document.getElementsByClassName("btn")[3];
+    var github = document.getElementsByClassName("btn")[4];
+    home.addEventListener("mouseover",function(){change1(home)});
+    home.addEventListener("mouseout",function(){change2(home)});
+    build.addEventListener("mouseover",function(){change1(build)});
+    build.addEventListener("mouseout",function(){change2(build)});
+    script.addEventListener("mouseover",function(){change1(script)});
+    script.addEventListener("mouseout",function(){change2(script)});
+    about.addEventListener("mouseover",function(){change1(about)});
+    about.addEventListener("mouseout",function(){change2(about)});
+    github.addEventListener("mouseover",function(){change1(github)});
+    github.addEventListener("mouseout",function(){change2(github)});
+}
+function zoom() {
+            document.body.style.zoom = "90%" 
+        }
+window.addEventListener("load",addeventos);
+window.scrollTo(0,112);
+</script>
+</body>
+</html>

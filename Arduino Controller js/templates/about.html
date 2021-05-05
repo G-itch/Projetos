@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Controller</title>
+    <link rel="icon" type="image/x-icon" href="\static\images\remote_control_32px.png">
+    <style>
+        body{
+        position: relative;
+        width: 1440px;
+        height: 1024px;
+        background: #ffffff url("{{ url_for('static',filename='images/perple.jpg') }}");
+        background-repeat: no-repeat;
+        background-position:left;
+        background-size: cover;
+        }
+        .content{
+            position: absolute;
+            width: 1194px;
+            height: 740px;
+            left: 123px;
+            top: 142px;
+            background: #AFF0CA;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+        }
+        .Text1-rec{
+            position: absolute;
+            left: 10.3%;
+            right: 50%;
+            top: 8.65%;
+            bottom: 49.73%;
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        .What{
+            position: absolute;
+            left: 13.48%;
+            right: 70.77%;
+            top: 5.68%;
+            bottom: 83.38%;
+            font-family: morn-bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .nsei1{
+            position: absolute;
+            left: 13.48%;
+            right: 55.7%;
+            top: 13.32%;
+            bottom: 54.19%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .Text2-rec{
+            position: absolute;
+            left: 10.3%;
+            right: 50%;
+            top: 51.35%;
+            bottom: 3.11%;
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        .Make{
+            position: absolute;
+            left: 13.48%;
+            right: 63.23%;
+            top: 46.87%;
+            bottom: 41.49%;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            /* identical to box height */
+
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .nsei3{
+            position: absolute;
+            left: 13.48%;
+            right: 55.7%;
+            top: 54.85%;
+            bottom: 5.68%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .Título{
+            position: absolute;
+            left: 24.12%;
+            right: 63.9%;
+            top: -4.52%;
+            bottom: 90.95%;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 48px;
+            line-height: 58px;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .Text3-rec{
+            position: absolute;
+            left: 55.28%;
+            right: 5.03%;
+            top: 8.65%;
+            bottom: 25.81%;
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        #Languages{
+            position: absolute;
+            left: 59.34%;
+            right: 6.45%;
+            top: 6.16%;
+            bottom: 81.89%;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            /* identical to box height */
+
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        #Python{
+            position: absolute;
+            left: 69.77%;
+            right: 19.6%;
+            top: 14.59%;
+            bottom: 74.46%;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            /* identical to box height */
+
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        #Advanced1{
+            position: absolute;
+            left: 70.02%;
+            right: 19.85%;
+            top: 22.58%;
+            bottom: 70%;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        #Bar1{
+            position: absolute;
+            left: 62.14%;
+            right: 12.81%;
+            top: 25.54%;
+            bottom: 70%;
+
+            background: #65E3FF;
+            border-radius: 10px;
+        }
+        #Recgraph1{
+            position: absolute;
+            left: 62.14%;
+            right: 11.89%;
+            top: 25.54%;
+            bottom: 70%;
+
+            /* barras */
+
+            background: #AF93FF;
+            border-radius: 10px;
+        }
+        #C{
+            position: absolute;
+            left: 73.62%;
+            right: 24.2%;
+            top: 27.28%;
+            bottom: 61.89%;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            /* identical to box height */
+
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+
+        }
+        #Advanced2{
+            position: absolute;
+            left: 70.02%;
+            right: 19.85%;
+            top: 35.08%;
+            bottom: 57.7%;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        #Bar2{
+            position: absolute;
+            left: 62.14%;
+            right: 16.25%;
+            top: 38.11%;
+            bottom: 57.43%;
+
+            background: #FF6565;
+            border-radius: 10px;
+        }
+        #Recgraph2{
+            position: absolute;
+            left: 62.14%;
+            right: 11.89%;
+            top: 38.11%;
+            bottom: 57.43%;
+
+            background: #AF93FF;
+            border-radius: 10px;
+        }
+        #Javascript{
+            position: absolute;
+            left: 67.67%;
+            right: 16.16%;
+            top: 39.73%;
+            bottom: 49.32%;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+
+        }
+        #Medium1{
+            position: absolute;
+            left: 71.02%;
+            right: 20.85%;
+            top: 47.82%;
+            bottom: 44.86%;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        #Bar3{
+            position: absolute;
+            left: 62.14%;
+            right: 19.6%;
+            top: 50.68%;
+            bottom: 44.86%;
+
+            background: #FCFF68;
+            border-radius: 10px;
+        }
+        #Recgraph3{
+            position: absolute;
+            left: 62.14%;
+            right: 11.89%;
+            top: 50.68%;
+            bottom: 44.86%;
+            background: #AF93FF;
+            border-radius: 10px;
+        }
+        #Cpp{
+            position: absolute;
+            left: 73.53%;
+            right: 22.03%;
+            top: 52.3%;
+            bottom: 36.76%;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        #Medium2{
+            position: absolute;
+            left: 71.02%;
+            right: 20.85%;
+            top: 60.48%;
+            bottom: 32.3%;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        #Bar4{
+            position: absolute;
+            left: 62.14%;
+            right: 22.86%;
+            top: 63.24%;
+            bottom: 32.3%;
+            background: #7DFF68;
+            border-radius: 10px;
+        }
+        #Recgraph4{
+            position: absolute;
+            left: 62.14%;
+            right: 11.89%;
+            top: 63.24%;
+            bottom: 32.3%;
+            background: #AF93FF;
+            border-radius: 10px;
+        }
+        .Text4-rec{
+            position: absolute;
+            left: 55.28%;
+            right: 5.03%;
+            top: 77.43%;
+            bottom: 3.11%;
+            background: #8D65FF;
+            border-radius: 30px;
+        }
+        #contact{
+            position: absolute;
+            left: 57.45%;
+            right: 24.12%;
+            top: 73.86%;
+            bottom: 14.19%;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        #e-mail{
+            position: absolute;
+            left: 57.45%;
+            right: 35.09%;
+            top: 81.38%;
+            bottom: 10.41%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+
+            color: #FFFFFF;
+
+        }
+        #email{
+            position: absolute;
+            left: 57.45%;
+            right: 21.11%;
+            top: 86.14%;
+            bottom: 5.95%;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        #reclink{
+            position: absolute;
+            left: 80.15%;
+            right: 6.62%;
+            top: 84.46%;
+            bottom: 11.22%;
+            background: #FF3864;
+            border-radius: 10px;
+        }
+        #linkedin{
+            position: absolute;
+            left: 17.72%;
+            right: 17.72%;
+            top: -65.38%;
+            bottom: 0%;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+
+        }
+        #recdisc{
+            position: absolute;
+            left: 80.15%;
+            right: 6.62%;
+            top: 90%;
+            bottom: 5.68%;
+            background: #FF3864;
+            border-radius: 10px; 
+        }
+        #discord{
+            position: absolute;
+            left: 20.89%;
+            right: 21.52%;
+            top: 9.38%;
+            bottom: 0%;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 29px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .side_bar{
+            position: absolute;
+            width: 120px;
+            height: 590px;
+            left: 92px;
+            top: 217px;
+        }
+        .nav-items{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 0%;
+            bottom: 0%;
+            background: #8D65FF;
+            border-radius: 25px;
+        }
+        #home_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 0%;
+            bottom: 80%;
+            background: #8D65FF;
+            border-radius: 25px 25px 0px 0px;
+        }
+        #build_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 20%;
+            bottom: 60%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #script_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 40%;
+            bottom: 40%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #about_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 60%;
+            bottom: 20%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #github_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 80%;
+            bottom: 0%;
+            background: #8D65FF;
+            border-radius: 0px 0px 25px 25px;
+        }
+        #github_btn:hover,#about_btn:hover,#script_btn:hover,#build_btn:hover,#home_btn:hover,#reclink:hover,#linkedin:hover,#recdisc:hover,#discord:hover{
+            cursor: pointer;
+        }
+        .Home{
+            position: absolute;
+            left: 26.67%;
+            right: 26.67%;
+            top: 30.94%;
+            
+        }
+        .Build{
+            position: absolute;
+            left: 29.17%;
+            right: 29.17%;
+            top: 26.1%;
+            bottom: 66.1%;
+        }
+        .Script{
+            position: absolute;
+            left: 24.17%;
+            right: 24.17%;
+            top: 27%;
+
+        }
+        .About{
+            position: absolute;
+            left: 29.17%;
+            right: 29.17%;
+            top: 30.1%;
+        }
+        .Github{
+            position: absolute;
+            left: 22.5%;
+            right: 22.5%;
+            top: 26%;
+        }
+    </style>
+</head>
+<body onload="zoom()">
+    <section>
+            <div class = "content">
+                <h1 class = "Título">About</h1>
+            <div class = "Text1-rec"></div>
+            <h1 class = "What">Who i am?</h1>
+            <p class= "nsei1">&emsp;I am Enzo Furtini, a 17 years old programmer that lives in Brazil, like to create software and hardware ideas and i put maximum of effort in projects.<br>&emsp;I started programming since i was 15 and thenceforth i don’t stop learning new contents and languages.</p>
+            <div class = "Text2-rec"></div>
+            <p class = "Make">About the idea:</p>
+            <p class = "nsei3">&emsp;The ideia for the project came up when i was watching series in a desktop at night, and when i wanted to do things like, change the volume, skip or back the video i woudn’t able to do that without getting out of my bed.<br>&emsp;So i had an ideia, do a simple remote controller to supply my “lazy necessities”.</p>
+            <div class = "Text3-rec"></div>
+            <p id = "Languages">Languages that i know:</p>
+            <p id = "Python">Python</p>
+            <div id = "Recgraph1"></div>
+            <div id = "Bar1"></div>
+            <p id = "Advanced1">Advanced</p>
+            <p id = "C">C</p>
+            <div id = "Recgraph2"></div>
+            <div id = "Bar2"></div>
+            <p id = "Advanced2">Advanced</p>
+            <p id = "Javascript">Javascript</p>
+            <div id = "Recgraph3"></div>
+            <div id = "Bar3"></div>
+            <p id = "Medium1">Medium</p>
+            <p id = "Cpp">C#</p>
+            <div id = "Recgraph4"></div>
+            <div id = "Bar4"></div>
+            <p id = "Medium2">Medium</p>
+            <div class ="Text4-rec"></div>
+            <p id = "contact">Contact me:</p>
+            <p id = "e-mail">E-mail:</p>
+            <p id = "email">Enfurtini@gmail.com</p>
+            <div id = "reclink"><p id = "linkedin">Linkedin</p></div>
+            <div id = "recdisc"><div id = "discord">Discord</div></div>
+            </div> 
+            <nav class = "side_bar">
+                <ul class="nav-items"> 
+                    <li>
+                        <form action="/home" method="POST">
+                        <input type="hidden" name="" value="{{ url_for('index') }}">
+                        <button type="hidden">
+                        <a class= "btn" id = "home_btn">
+                            <div class="Home"> <img src="{{ url_for('static',filename='images/Home.svg') }}" alt= ""> </div>
+                        </a>
+                        </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="/build" method="post">
+                        <input type="hidden" name="hom" value="{{ url_for('index') }}">
+                        <button>
+                        <a class="btn" id="build_btn">
+                            <div class="Build"><img src="{{ url_for('static',filename='images/Build.svg') }}" alt= ""> </div>
+                        </a>
+                        </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="/script" method="post">
+                        <input type="hidden" name="script" value="{{ url_for('index') }}">
+                        <button>
+                        <a class= "btn" id="script_btn" href="#">
+                            <div class="Script"><img src="{{ url_for('static',filename='images/Script.svg') }}" alt= "">  </div>
+                        </a>
+                        </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="/about" method="post">
+                        <input type="hidden" name="about" value="{{ url_for('index') }}">
+                        <button>
+                        <a class= "btn" id="about_btn" href="#">
+                            <div class="About"><img src="{{ url_for('static',filename='images/About.svg') }}" alt= "">  </div>
+                        </a>
+                        </button>
+                        </form>
+                    </li>
+                    <li>
+                        <a class= "btn" id="github_btn" href="#">
+                            <div class="Github"><img src="{{ url_for('static',filename='images/Github icon.svg') }}" alt= "">  </div>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+    </section>
+    <script>
+        function change1(f){
+            f.style.backgroundColor = "#AC8FFF";
+        }
+        function change2(f){
+            f.style.backgroundColor = "#8D65FF";
+        }
+        function change3(f){
+        f.style.backgroundColor = "#FE708F";
+        }
+        function change4(f){
+        f.style.backgroundColor = "#FF3864";
+        }
+        function addeventos(){
+            var home = document.getElementsByClassName("btn")[0];
+            var build = document.getElementsByClassName("btn")[1];
+            var script = document.getElementsByClassName("btn")[2];
+            var about = document.getElementsByClassName("btn")[3];
+            var github = document.getElementsByClassName("btn")[4];
+            var link = document.getElementById("reclink");
+            var disc = document.getElementById("recdisc");
+            home.addEventListener("mouseover",function(){change1(home)});
+            home.addEventListener("mouseout",function(){change2(home)});
+            build.addEventListener("mouseover",function(){change1(build)});
+            build.addEventListener("mouseout",function(){change2(build)});
+            script.addEventListener("mouseover",function(){change1(script)});
+            script.addEventListener("mouseout",function(){change2(script)});
+            about.addEventListener("mouseover",function(){change1(about)});
+            about.addEventListener("mouseout",function(){change2(about)});
+            github.addEventListener("mouseover",function(){change1(github)});
+            github.addEventListener("mouseout",function(){change2(github)});
+            link.addEventListener("mouseover",function(){change3(link)});
+            link.addEventListener("mouseout",function(){change4(link)});
+            disc.addEventListener("mouseover",function(){change3(disc)});
+            disc.addEventListener("mouseout",function(){change4(disc)});
+        }
+        function zoom() {
+            document.body.style.zoom = "90%" 
+        }
+        window.addEventListener("load",addeventos);
+        window.scrollTo(0,112);
+    </script>
+</body>
+</html>

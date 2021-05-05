@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino Controller</title>
+    <link rel="icon" type="image/x-icon" href="\static\images\remote_control_32px.png">
+    <style>
+        body{
+        position: relative;
+        width: 1440px;
+        height: 1024px;
+        background: #ffffff url("{{ url_for('static',filename='images/perple.jpg') }}");
+        background-repeat: no-repeat;
+        background-position:left;
+        background-size: cover;
+        image-resolution: 10;
+        }
+        .content{
+            position: absolute;
+            left: 10.54%;
+            right: 6.54%;
+            top: 13.87%;
+            bottom: 13.87%;
+            background: #AFF0CA;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.25);
+            border-radius: 50px;
+        }
+        .Título{
+            position: absolute;
+            width: 145px;
+            height: 58px;
+            left: 271px;
+            top: -4px;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 48px;
+            line-height: 58px;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .Text1-rec{
+            position: absolute;
+            left: 8.96%;
+            right: 51.34%;
+            top: 15.14%;
+            bottom: 34.19%;
+
+            /* side bar */
+
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        .First{
+            position: absolute;
+            width: 420px;
+            height: 44px;
+            left: 139px;
+            top: 103px;
+
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            /* identical to box height */
+
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        .nsei1{
+            position: absolute;
+            width: 353px;
+            height: 216px;
+            left: 139px;
+            top: 171px;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            color: #FFFFFF;
+        }
+        .redirect{
+            list-style-type: none;
+        }
+        #IDE{
+            position: absolute;
+            left: 12.98%;
+            right: 79.4%;
+            top: 57.43%;
+            bottom: 38.51%;
+
+            background: #FF3864;
+            border-radius: 10px;
+        }
+        #text1{
+            position: absolute;
+            left: 27.47%;
+            right: 28.57%;
+            top: 13.33%;
+            bottom: 6.67%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            /* identical to box height */
+
+            text-align: justify;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        #lib{
+            position: absolute;
+            width: 91px;
+            height: 30px;
+            left: 298px;
+            top: 425px;
+
+            background: #FF3864;
+            border-radius: 10px;
+        }
+        #text2{
+            position: absolute;
+            left: 35.16%;
+            right: 34.07%;
+            top: 13.33%;
+            bottom: 6.67%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            /* identical to box height */
+
+            text-align: justify;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+
+        }
+        #text3{
+            position: absolute;
+            left: 17.58%;
+            right: 16.48%;
+            top: 13.33%;
+            bottom: 6.67%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            /* identical to box height */
+
+            text-align: justify;
+            letter-spacing: 0.03em;
+
+            /* title */
+
+            color: #FFFFFF;
+        }
+        #file{
+            position: absolute;
+            left: 37.02%;
+            right: 55.36%;
+            top: 57.43%;
+            bottom: 38.51%;
+
+            background: #FF3864;
+            border-radius: 10px;
+        }
+        .dr{
+            list-style-type: none;
+        }
+        #driver{
+            position: absolute;
+            width: 225px;
+            height: 35px;
+            left: 233px;
+            top: 656px;
+            background: #FF3864;
+            border-radius: 10px;
+        }
+        #text4{
+            position: absolute;
+            left: 7.11%;
+            right: 6.67%;
+            top: 13.43%;
+            bottom: 18%;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .Text2-rec{
+            position: absolute;
+            left: 8.96%;
+            right: 51.34%;
+            top: 73.24%;
+            bottom: 4.32%;
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        .not{
+            position: absolute;
+            width: 293px;
+            height: 44px;
+            left: 202px;
+            top: 512px;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .nsei3{
+            position: absolute;
+            left: 10.39%;
+            right: 52.85%;
+            top: 77.54%;
+            bottom: 12.97%;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .Text3-rec{
+            position: absolute;
+            left: 53.1%;
+            right: 1.51%;
+            top: 5.27%;
+            bottom: 7.27%;
+            background: #8D65FF;
+            border-radius: 50px;
+        }
+        .Setup{
+            position: absolute;
+            width: 141px;
+            height: 58px;
+            left: 834px;
+            top: 9px;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 48px;
+            line-height: 58px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .nsei4{
+            position: absolute;
+            width: 516px;
+            height: 120px;
+            left: 653px;
+            top: 102px;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 24px;
+            line-height: 24px;
+            text-align: justify;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .Key{
+            position: absolute;
+            width: 58px;
+            height: 36px;
+            left: 738px;
+            top: 230px;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 36px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .teclas{
+            position: absolute;
+            left: 635px;
+            top: 297px;
+            padding: 32px;
+            width: 200px;
+            color: #FFFFFF;
+        }
+        .select_box{
+          display: flex;
+          flex-direction: column;
+        }
+        .select_box .options_k{
+            background: #FF3864;
+            color: #FFFFFF;
+            max-height: 0; 
+            width: 100%;
+             opacity: 0;
+            transition: all 0.4s;
+            border-radius: 10px;
+            overflow: hidden;
+
+            order: 1;
+        }
+        .selected{
+            background: #FF3864;
+            border-radius: 10px;
+            margin-bottom: 8px;
+            color: #FFFFFF;
+            position: relative;
+            
+            
+            order: 0;
+        }
+        .selected::after{
+            content: "";
+            background: url("{{ url_for('static',filename='images/Arrow.svg') }}");
+            background-size: contain;
+            background-repeat: no-repeat;
+            
+            position: absolute;
+            height: 100%;
+            width: 20px;
+            right: 15px;
+            top: 11px;
+
+            transition: all 0.4s;
+        }
+        .select_box .options_k.active{
+            max-height: 240px;
+            opacity: 1;
+            overflow-y: scroll;
+        }
+        .select_box .options_k.active +.selected::after{
+            transform: rotateX(180deg);
+            top: -11px;
+        }
+        .select_box .options_k::-webkit-scrollbar{
+            width: 8px;
+            background: #fc1f4f;
+            border-radius: 0 10px 10px 0;
+        }
+        .select_box .options_k::-webkit-scrollbar-thumb{
+            background: #f58ba2;
+            border-radius: 10px 10px 10px 10px;
+        }
+        .select_box .key,.selected{
+            padding: 12px 24px;
+            cursor: pointer;
+        }
+        .select_box .key:hover{
+            background: #FE708F;
+        }
+        .select_box label{
+            cursor: pointer;
+        }
+        .select_box .key .radio{
+            display: none;
+        }
+        .Button{
+            position: absolute;
+            width: 101px;
+            height: 36px;
+            left: 987px;
+            top: 230px;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 36px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        .nsei5{
+            position: absolute;
+            width: 233px;
+            height: 88px;
+            left: 922px;
+            top: 285px;
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 20px;
+            text-align: justify;
+            letter-spacing: 0.02em;
+            color: #FFFFFF;
+        }
+        .Text4-rec{
+            position: absolute;
+            width: 212px;
+            height: 42px;
+            left: 932px;
+            top: 378px;
+            background: #AFF0CA;
+            border-radius: 10px;
+        }
+        #Coderu{
+            position: absolute;
+            left: 20.20%;
+            right: 20.20%;
+            top: -45.67%;
+            bottom: 16.67%;
+
+            font-family: Proxima Nova;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 28px;
+            line-height: 28px;
+            /* identical to box height */
+
+            text-align: justify;
+            letter-spacing: 0.03em;
+
+            /* side bar */
+
+            color: #8D65FF;
+        }
+        .Run{
+            position: absolute;
+            width: 57px;
+            height: 36px;
+            left: 1009px;
+            top: 412px;
+            font-family: Morn-Bold;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 30px;
+            line-height: 36px;
+            letter-spacing: 0.03em;
+            color: #FFFFFF;
+        }
+        #pyr{
+            position: absolute;
+            width: 212px;
+            height: 120px;
+            left: 933px;
+            top: 500px;
+            border-radius: 20px;
+            outline: none;
+            border: none;
+        }
+        #pyr:hover{
+            cursor: pointer;
+        }
+        #playro{
+            position: absolute;
+            width: 212px;
+            height: 120px;
+            top: 0px;
+            left: 0px;
+            background: #aff0ca;
+            border-radius: 20px;
+        }
+        #working{
+            position: absolute;
+            left: 37.74%;
+            right: 38.68%;
+            top: 29.17%;
+            bottom: 29.17%;
+        }
+        .side_bar{
+            position: absolute;
+            width: 120px;
+            height: 590px;
+            left: 92px;
+            top: 217px;
+        }
+        .nav-items{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 0%;
+            bottom: 0%;
+            background: #8D65FF;
+            border-radius: 25px;
+        }
+        #home_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 0%;
+            bottom: 80%;
+            background: #8D65FF;
+            border-radius: 25px 25px 0px 0px;
+        }
+        #build_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 20%;
+            bottom: 60%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #script_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 40%;
+            bottom: 40%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #about_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 60%;
+            bottom: 20%;
+            background: #8D65FF;
+            border-radius: 0px;
+        }
+        #github_btn{
+            position: absolute;
+            left: 0%;
+            right: 0%;
+            top: 80%;
+            bottom: 0%;
+            background: #8D65FF;
+            border-radius: 0px 0px 25px 25px;
+        }
+        #github_btn:hover,#about_btn:hover,#script_btn:hover,#build_btn:hover,#home_btn{
+            cursor: pointer;
+        }
+        .Home{
+            position: absolute;
+            left: 26.67%;
+            right: 26.67%;
+            top: 30.94%;
+            
+        }
+        .Build{
+            position: absolute;
+            left: 29.17%;
+            right: 29.17%;
+            top: 26.1%;
+            bottom: 66.1%;
+        }
+        .Script{
+            position: absolute;
+            left: 24.17%;
+            right: 24.17%;
+            top: 27%;
+
+        }
+        .About{
+            position: absolute;
+            left: 29.17%;
+            right: 29.17%;
+            top: 30.1%;
+        }
+        .Github{
+            position: absolute;
+            left: 22.5%;
+            right: 22.5%;
+            top: 26%;
+        }
+    </style>
+</head>
+<body onload="zoom()">
+    <section>
+        <div class = "content">
+        <h1 class ="Título">Script</h1>
+        <div class ="Text1-rec"></div>
+        <h1 class ="First">First you will need this:</h1>
+        <p class="nsei1">1- Install Arduino IDE<br>
+            <br>
+            2- Install IRremote library (2.8)<br>
+            <br>
+            3- Put the compressed<br>
+            file in Arduino/libraries<br>
+            <br>
+            4- Dowload the code, open<br>
+            and run in the IDE</p>
+        <ul class="redirect">
+            <li>
+                <a class="btn2" id="IDE" href="https://www.arduino.cc/en/software" target="_blank">
+                <div id="text1">IDE</div>
+                </a>
+            </li> 
+            <li>
+                <a class="btn2" id="lib" href="https://github.com/Arduino-IRremote/Arduino-IRremote" target="_blank">
+                <div id="text2">lib</div>
+                </a>
+            </li>  
+            <li>
+                <a class="btn2" id="file" href="{{ url_for('static',filename='player.ino')}}" download="Code.ino">
+                <div id="text3">Code</div>
+                </a>
+            </li>    
+              
+        </ul>
+        <div class ="Text2-rec"></div>
+        <p class ="not">If is not working</p>
+        <p class = "nsei3">Some computers don’t recognized the<br>
+            serial port of the Arduino, in this case</p>
+        <li class="dr">
+            <a class="btn2" id="driver" href="https://drive.google.com/file/d/0B2YXepPR2qlAdkR6eXNDMVU3a0E/view" target="_blank">
+            <div id="text4">Install this driver</div>
+            </a>
+        </li>  
+        <div class="Text3-rec"></div>
+        <p class="Setup">Setup</p>
+        <p class="nsei4">&emsp;By default, the short keys of almost video<br>
+            players are the same, so for make things<br>
+            more easy, just select one key and press<br>
+            the button in the control that you want refer <br>
+            the key.</p>
+        <p class="Key">Key</p>
+        <div class="teclas">
+            <div class="select_box"> 
+                <div class="options_k">
+                    <div class="key">
+                        <input type="radio" class="radio" id="stop" name="category">
+                        <label for="stop">Stop</label>
+                    </div>
+        
+                    <div class="key">
+                        <input type="radio" class="radio" id="play" name="category">
+                        <label for="play">Play/Pause</label>
+                    </div>
+
+                    <div class="key">
+                        <input type="radio" class="radio" id="back" name="category">
+                        <label for="back">Back</label>
+                    </div>
+
+                    <div class="key">
+                        <input type="radio" class="radio" id="forward" name="category">
+                        <label for="stop">Forward</label>
+                    </div>
+
+
+                    <div class="key">
+                        <input type="radio" class="radio" id="+" name="category">
+                        <label for="+">Volume Up</label>
+                    </div>
+  
+
+                    <div class="key">
+                        <input type="radio" class="radio" id="-" name="category">
+                        <label for="-">Volume Down</label>
+                    </div>
+     
+                    <div class="key">
+                        <input type="radio" class="radio" id="enter" name="category">
+                        <label for="enter">Enter</label>
+                    </div>
+                    <div class="key">
+                        <input type="radio" class="radio" id="tab" name="category">
+                        <label for="tab">Tab</label>
+                    </div>
+                    <div class="key">
+                        <input type="radio" class="radio" id="full" name="category">
+                        <label for="full">Full screen</label>
+                    </div>
+                    <div class="key">
+                        <input type="radio" class="radio" id="minimize" name="category">
+                        <label for="minimize">Minimize</label>
+                    </div>
+                    <div class="key">
+                        <input type="radio" class="radio" id="mute" name="category">
+                        <label for="mute">Mute</label>
+                    </div>
+                </div>
+                <div class="selected">{{ Choose }}</div>
+                <div id="selecionado" style="display: none;">{{ ei }}</div>
+                <form action="/tecla" method="post" id="submitado" class="key" style="display: none;">
+                <input type="hidden" class= "key" name="oi" id="aqui" value="ei">
+                <input type="hidden" class ="key" name="hoi" id="hoi" value="">
+                <div id ="heyu" style="display: none;">{{ scroll }}</div>
+                </form> 
+            </div>
+        </div>
+        <p class="Button">Button</p>
+        <p class="nsei5">When you selected the key, press a button of the controller:</p>
+        <div class="Text4-rec"><p id="Coderu">{{ Code }}</p></div>
+        <p class="Run">Run</p>
+        <form method="post" action="/py">
+        <button id="pyr"><a id ="playro"><div id="working"><img  id="image" src="{{ url_for('static',filename='images/Play2.svg') }}" alt=""></div></a></button>
+        </form>
+        </div>
+        <nav class = "side_bar">
+            <ul class="nav-items"> 
+                <li>
+                    <form action="/home" method="post">
+                    <input type="hidden" name="href" value="{{ url_for('index') }}">
+                    <button>
+                    <a class= "btn" id = "home_btn">
+                        <div class="Home"> <img src="{{ url_for('static',filename='images/Home.svg') }}" alt= ""> </div>
+                    </a></button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/build" method="post">
+                    <input type="hidden" name="build" value="{{ url_for('index') }}">
+                    <button>
+                    <a class="btn" id="build_btn">
+                        <div class="Build"><img src="{{ url_for('static',filename='images/Build.svg') }}" alt= ""> </div>
+                    </a></button>
+                    </form>
+                </li>
+                <li>
+                    <form action="/script" method="post">
+                    <input type="hidden" name="script" value="{{ url_for('index') }}">
+                    <button>
+                    <a class= "btn" id="script_btn">
+                        <div class="Script"><img src="{{ url_for('static',filename='images/Script.svg') }}" alt= "">  </div>
+                    </a>
+                    </button>
+                    </form>
+                </li>
+                <form action="/about" method="post">
+                <input type="hidden" name="about" value="{{ url_for('index') }}">
+                <button>
+                <a class= "btn" id="about_btn">
+                    <div class="About"><img src="{{ url_for('static',filename='images/About.svg') }}" alt= "">  </div>
+                </a>                    
+                </button>
+                </form>
+                </li>
+                <li>
+                    <a class= "btn" id="github_btn" href="#">
+                        <div class="Github"><img src="{{ url_for('static',filename='images/Github icon.svg') }}" alt= "">  </div>
+                    </a>
+                </li>
+            </ul>
+            </form>
+        </nav>
+</section>
+<script>
+const selected = document.querySelector(".selected")
+const options_k = document.querySelector(".options_k")
+const key_list = document.querySelectorAll(".key")
+var detalhe = 0;
+selected.addEventListener("click" , () =>{
+    options_k.classList.toggle("active");    
+})
+key_list.forEach( o => {
+    o.addEventListener("click", () => {
+        document.getElementById("aqui").value = o.querySelector("label").innerHTML;
+        document.getElementById("hoi").value = window.scrollY;
+        options_k.classList.remove("active");
+        // setTimeout(document.getElementById("submitado").submit(),7000);
+        selected.innerHTML = o.querySelector("label").innerHTML;
+        document.getElementById("submitado").submit();
+        
+    })
+})
+function change1(f){
+    f.style.backgroundColor = "#AC8FFF";
+}
+function change2(f){
+    f.style.backgroundColor = "#8D65FF";
+}
+function change3(f){
+    f.style.backgroundColor = "#FE708F";
+}
+function change4(f){
+    f.style.backgroundColor = "#FF3864";
+}
+function change5(f){
+    if (detalhe == 0){
+        f.style.backgroundColor = "#B4FFDF";
+    }
+    else{
+        f.style.backgroundColor = "#FF5D84";
+    }
+}
+function change6(f){
+    if (detalhe == 0){
+    f.style.backgroundColor = "#aff0ca";
+    }
+    else{
+        f.style.backgroundColor = "#FF3864";
+    }
+}
+function changebutton(f){
+    f.style.backgroundColor = "#FF5D84";
+    document.getElementById("playro").style.backgroundColor = "#FF5D84";
+    detalhe = 1;
+    document.getElementById("image").src = "{{ url_for('static',filename='images/Pause.svg') }}";
+}
+function addeventos(){
+    var home = document.getElementsByClassName("btn")[0];
+    var build = document.getElementsByClassName("btn")[1];
+    var script = document.getElementsByClassName("btn")[2];
+    var about = document.getElementsByClassName("btn")[3];
+    var github = document.getElementsByClassName("btn")[4];
+    var IDE = document.getElementById("IDE");
+    var lib = document.getElementById("lib");
+    var Code = document.getElementById("file");
+    var driver = document.getElementById("driver");
+    var playro = document.getElementById("playro");
+    var pyr = document.getElementById("pyr");
+    home.addEventListener("mouseover",function(){change1(home)});
+    home.addEventListener("mouseout",function(){change2(home)});
+    build.addEventListener("mouseover",function(){change1(build)});
+    build.addEventListener("mouseout",function(){change2(build)});
+    script.addEventListener("mouseover",function(){change1(script)});
+    script.addEventListener("mouseout",function(){change2(script)});
+    about.addEventListener("mouseover",function(){change1(about)});
+    about.addEventListener("mouseout",function(){change2(about)});
+    github.addEventListener("mouseover",function(){change1(github)});
+    github.addEventListener("mouseout",function(){change2(github)});
+    IDE.addEventListener("mouseover",function(){change3(IDE)});
+    IDE.addEventListener("mouseout",function(){change4(IDE)});
+    lib.addEventListener("mouseover",function(){change3(lib)});
+    lib.addEventListener("mouseout",function(){change4(lib)});
+    Code.addEventListener("mouseover",function(){change3(Code)});
+    Code.addEventListener("mouseout",function(){change4(Code)});
+    driver.addEventListener("mouseover",function(){change3(driver)});
+    driver.addEventListener("mouseout",function(){change4(driver)});
+    playro.addEventListener("mouseover",function(){change5(playro)});
+    playro.addEventListener("mouseout",function(){change6(playro)});
+    pyr.addEventListener("click",function(){changebutton(pyr)});
+}
+function zoom() {
+            document.body.style.zoom = "90%" 
+        }
+window.addEventListener("load",addeventos);
+if(document.getElementById("selecionado").innerHTML=="1"){
+
+}
+else{
+    selected.innerHTML = "Choose a key:";
+}
+
+if(isNaN(parseFloat(document.getElementById("heyu").innerHTML))){
+    window.scrollTo(0,112)
+}
+else{
+    window.scrollTo(0,parseFloat(document.getElementById("heyu").innerHTML))
+}
+</script>
+</body>
+</html>
